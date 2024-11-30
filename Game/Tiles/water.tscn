@@ -7,7 +7,7 @@ size = Vector2(96, 112)
 
 [node name="Water" type="Area2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.233703, 0.572202, 0.964573, 1)

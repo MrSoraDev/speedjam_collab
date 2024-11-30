@@ -103,3 +103,7 @@ func jump_vector() -> void:
 	velocity.y = -jump_force
 	jump_buffer_counter = 0
 	cayote_counter = 0
+
+
+func _on_water_collision_area_entered(area: Area2D) -> void:
+	recharge()

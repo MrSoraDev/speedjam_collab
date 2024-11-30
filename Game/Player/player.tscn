@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c77tmk4lpm6gw"]
+[gd_scene load_steps=6 format=3 uid="uid://c77tmk4lpm6gw"]
 
 [ext_resource type="Script" path="res://Game/Player/player.gd" id="1_f3b02"]
 [ext_resource type="Texture2D" uid="uid://bfcdfk48ofafw" path="res://icon.svg" id="1_tf8vo"]
@@ -8,6 +8,9 @@ radius = 77.1622
 
 [sub_resource type="LabelSettings" id="LabelSettings_f4bik"]
 font_size = 36
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sin6"]
+size = Vector2(133, 51)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
@@ -31,4 +34,15 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="WaterCollision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollision"]
+modulate = Color(0.145647, 0.32876, 0.990569, 1)
+position = Vector2(0.5, 72.5)
+shape = SubResource("RectangleShape2D_1sin6")
+
 [connection signal="timeout" from="ChargedTimer" to="." method="_on_charged_timer_timeout"]
+[connection signal="area_entered" from="WaterCollision" to="." method="_on_water_collision_area_entered"]
+[connection signal="body_entered" from="WaterCollision" to="." method="_on_water_collision_body_entered"]
