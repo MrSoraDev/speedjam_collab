@@ -10,7 +10,10 @@ class_name Player
 @export var crouch_jump: float = 0.8
 @export var cayote_time: int = 15
 
-
+var dash_acc = 2
+var dash_limit = 1500
+var dash_decay = 20
+var speed_limit = 800
 var jump_buffer_counter: int = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var cayote_counter: int = 0
@@ -47,11 +50,22 @@ func _physics_process(delta: float) -> void:
 			
 	if Input.is_action_pressed("click") and charge > 0:
 		boost()
+	else:
+		charged = false
 	if Input.is_action_just_pressed("charge"):
 		recharge()
 		
-	if direction: 
-		velocity.x = clamp(velocity.x + direction * speed,-800 ,800)
+	if direction and charged == true:
+		charge -= 2
+		velocity.x = velocity.x + speed * dash_acc * direction
+		velocity.x = clamp(velocity.x + direction * speed,-dash_limit ,dash_limit)
+	elif direction and charged == false: 
+		if velocity.x > dash_limit:
+			velocity.x = velocity.x - dash_decay
+		elif velocity.x < -dash_limit:
+			velocity.x = velocity.x + dash_decay
+		else:
+			velocity.x = clamp(velocity.x + direction * speed,-speed_limit ,speed_limit)
 	else:
 		velocity.x = move_toward(velocity.x, 0, accelerarion)
 	
@@ -92,8 +106,7 @@ func recharge() -> void:
 	charge += 20
 
 func boost() -> void:
-	charge -= 2
-	velocity.x = velocity.x + 5 * direction 
+	charged = true
 
 
 
