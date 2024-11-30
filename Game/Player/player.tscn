@@ -43,6 +43,12 @@ modulate = Color(0.145647, 0.32876, 0.990569, 1)
 position = Vector2(0.5, 72.5)
 shape = SubResource("RectangleShape2D_1sin6")
 
+[node name="right_wall" type="RayCast2D" parent="."]
+target_position = Vector2(130, 0)
+
+[node name="Left_wall" type="RayCast2D" parent="."]
+target_position = Vector2(-130, 0)
+
 [connection signal="timeout" from="ChargedTimer" to="." method="_on_charged_timer_timeout"]
 [connection signal="area_entered" from="WaterCollision" to="." method="_on_water_collision_area_entered"]
 [connection signal="body_entered" from="WaterCollision" to="." method="_on_water_collision_body_entered"]

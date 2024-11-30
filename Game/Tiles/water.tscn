@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgg5lf47818p6"]
+[gd_scene load_steps=4 format=3 uid="uid://cgg5lf47818p6"]
 
-[ext_resource type="Texture2D" uid="uid://bfcdfk48ofafw" path="res://icon.svg" id="1_a7ova"]
+[ext_resource type="Texture2D" uid="uid://b646qe2fsjquh" path="res://Game/placeholder/Sprite-0001.png" id="1_3ds6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qakkk"]
-size = Vector2(96, 112)
+size = Vector2(32, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie0y1"]
+size = Vector2(32, 32)
 
 [node name="Water" type="Area2D"]
 collision_layer = 4
@@ -11,9 +14,13 @@ collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.233703, 0.572202, 0.964573, 1)
-scale = Vector2(0.742188, 0.742188)
-texture = ExtResource("1_a7ova")
+texture = ExtResource("1_3ds6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_qakkk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ie0y1")

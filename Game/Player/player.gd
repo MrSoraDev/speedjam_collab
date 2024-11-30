@@ -3,7 +3,7 @@ class_name Player
 
 @export_category("Movimentação")
 @export var speed: int = 50
-@export var jump_force: int = 300
+@export var jump_force: int = 600
 @export var accelerarion: int = 50
 @export var jump_buffer_time: int = 15
 @export var crouch_speed: float = 0.5
@@ -14,6 +14,16 @@ var dash_acc = 2
 var dash_limit = 1500
 var dash_decay = 20
 var speed_limit = 800
+var charge_decay = 2
+
+
+
+
+
+
+
+
+
 var jump_buffer_counter: int = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var cayote_counter: int = 0
@@ -27,7 +37,8 @@ var used_doublejump: bool = false
 @onready var charge_label: Label = $ChargeLabel
 @onready var charged_timer: Timer = $ChargedTimer
 @onready var player_sprite: Sprite2D = $PlayerSprite
-
+@onready var ray_cast_right: RayCast2D = $right_wall
+@onready var ray_cast_left: RayCast2D = $Left_wall
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -55,8 +66,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("charge"):
 		recharge()
 		
+	
+	
+	
 	if direction and charged == true:
-		charge -= 2
+		charge -= charge_decay
 		velocity.x = velocity.x + speed * dash_acc * direction
 		velocity.x = clamp(velocity.x + direction * speed,-dash_limit ,dash_limit)
 	elif direction and charged == false: 
@@ -75,7 +89,14 @@ func _physics_process(delta: float) -> void:
 	elif direction < 0:
 		player_sprite.flip_h = true
 
-	
+	if ray_cast_right.is_colliding() == true:
+		if Input.is_action_just_pressed("jump"):
+			velocity.x = velocity.x  * -1
+			jump_vector()
+	if ray_cast_left.is_colliding() == true:
+		if Input.is_action_just_pressed("jump"):
+			velocity.x = velocity.x  * -1
+			jump_vector()
 	jump()
 	move_and_slide()
 	#update_animations(direction)
