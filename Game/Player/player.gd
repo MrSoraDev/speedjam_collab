@@ -45,14 +45,13 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 func _process(delta: float) -> void:
-	charge_label.text = str(charge)
+	charge_label.text = str(velocity)
 	dashposition = position.x + 500
 	progress_bar.value = charge
 	
 	
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("move_left", "move_right")
-	print(velocity)
 	if is_on_floor():
 		cayote_counter = cayote_time #enquanto ta no chao carrega o contador
 	if not is_on_floor(): #Quando nao está no chao, aplica a gravidade
@@ -83,7 +82,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = velocity.x + dash_decay
 		else:
 			velocity.x = clamp(velocity.x + direction * speed,-speed_limit ,speed_limit)
-	else:
+	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, accelerarion)
 	
 	#flip
@@ -94,11 +93,11 @@ func _physics_process(delta: float) -> void:
 
 	if ray_cast_right.is_colliding() == true:
 		if Input.is_action_just_pressed("jump"):
-			velocity.x = velocity.x  * -1
+			velocity.x = velocity.x  * -1 - 500
 			jump_vector()
 	if ray_cast_left.is_colliding() == true:
 		if Input.is_action_just_pressed("jump"):
-			velocity.x = velocity.x  * -1
+			velocity.x = velocity.x  * -1 + 500
 			jump_vector()
 	jump()
 	move_and_slide()
