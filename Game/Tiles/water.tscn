@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgg5lf47818p6"]
+
+[ext_resource type="Texture2D" uid="uid://bfcdfk48ofafw" path="res://icon.svg" id="1_a7ova"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qakkk"]
+size = Vector2(96, 112)
+
+[node name="Water" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.233703, 0.572202, 0.964573, 1)
+scale = Vector2(0.742188, 0.742188)
+texture = ExtResource("1_a7ova")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_qakkk")
