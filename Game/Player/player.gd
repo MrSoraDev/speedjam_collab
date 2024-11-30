@@ -2,8 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export_category("Movimentação")
-@export var max_speed: int = 130
-
+@export var speed: int = 50
 @export var jump_force: int = 300
 @export var accelerarion: int = 50
 @export var jump_buffer_time: int = 15
@@ -36,7 +35,7 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("move_left", "move_right")
-	
+	print(velocity)
 	if is_on_floor():
 		cayote_counter = cayote_time #enquanto ta no chao carrega o contador
 	if not is_on_floor(): #Quando nao está no chao, aplica a gravidade
@@ -46,24 +45,21 @@ func _physics_process(delta: float) -> void:
 		if velocity.y > 1500: #evitar que ele ganhe velocidade caindo infinitamente
 			velocity.y = 1500
 			
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_pressed("click") and charge > 0:
 		boost()
 	if Input.is_action_just_pressed("charge"):
 		recharge()
 		
-	if direction: #se tiever um input
-		if charged:
-			velocity.x = (direction * max_speed) * 2
-		else:
-			velocity.x = direction * max_speed
+	if direction: 
+		velocity.x = clamp(velocity.x + direction * speed,-800 ,800)
+	else:
+		velocity.x = move_toward(velocity.x, 0, accelerarion)
 	
 	#flip
 	if direction > 0:
 		player_sprite.flip_h = false
 	elif direction < 0:
 		player_sprite.flip_h = true
-	else:
-		velocity.x = move_toward(velocity.x, 0, accelerarion)
 
 	
 	jump()
@@ -96,16 +92,12 @@ func recharge() -> void:
 	charge += 20
 
 func boost() -> void:
-	#
-	if charged or charge <= 0:
-		return
-	charge -= 20
-	position.x = lerp(position.x,dashposition,0.5)
-	charged_timer.start()
-	charged = true
+	charge -= 2
+	velocity.x = velocity.x + 5 * direction 
 
-func _on_charged_timer_timeout() -> void:
-	charged = false
+
+
+
 
 func jump_vector() -> void:
 	velocity.y = -jump_force

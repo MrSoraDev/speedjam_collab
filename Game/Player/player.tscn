@@ -12,7 +12,6 @@ font_size = 36
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_f3b02")
-max_speed = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xvhdk")
