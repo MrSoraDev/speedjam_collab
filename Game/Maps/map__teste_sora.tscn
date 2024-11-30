@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=4 uid="uid://bt4k5yf8knsii"]
+[gd_scene load_steps=11 format=4 uid="uid://daon6vjfoejgr"]
 
-[ext_resource type="Texture2D" uid="uid://bfcdfk48ofafw" path="res://icon.svg" id="1_y8yr6"]
-[ext_resource type="PackedScene" uid="uid://c77tmk4lpm6gw" path="res://Game/Player/player.tscn" id="2_k5omr"]
-[ext_resource type="PackedScene" uid="uid://cgg5lf47818p6" path="res://Game/Tiles/water.tscn" id="3_3g4wb"]
-[ext_resource type="Texture2D" uid="uid://cut5r2bcre1g" path="res://Game/placeholder/chao.png" id="3_jg5m4"]
-[ext_resource type="PackedScene" uid="uid://bidl0qfjiqoe5" path="res://Game/UI/hud.tscn" id="4_xh6lg"]
-[ext_resource type="PackedScene" uid="uid://m2k53nusn3nd" path="res://Game/UI/stopwatch.tscn" id="6_x04i2"]
+[ext_resource type="PackedScene" uid="uid://c77tmk4lpm6gw" path="res://Game/Player/player.tscn" id="1_u5peb"]
+[ext_resource type="Texture2D" uid="uid://bfcdfk48ofafw" path="res://icon.svg" id="2_hxqf6"]
+[ext_resource type="Texture2D" uid="uid://cut5r2bcre1g" path="res://Game/placeholder/chao.png" id="3_pvxpj"]
+[ext_resource type="PackedScene" uid="uid://cgg5lf47818p6" path="res://Game/Tiles/water.tscn" id="4_2h1v0"]
+[ext_resource type="PackedScene" uid="uid://bidl0qfjiqoe5" path="res://Game/UI/hud.tscn" id="5_cid8i"]
+[ext_resource type="PackedScene" uid="uid://m2k53nusn3nd" path="res://Game/UI/stopwatch.tscn" id="6_pawmf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tf61n"]
-texture = ExtResource("1_y8yr6")
+texture = ExtResource("2_hxqf6")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -139,13 +139,13 @@ texture = ExtResource("1_y8yr6")
 7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xkoy"]
-texture = ExtResource("3_jg5m4")
+texture = ExtResource("3_pvxpj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5u5d6"]
-scenes/1/scene = ExtResource("3_3g4wb")
+scenes/1/scene = ExtResource("4_2h1v0")
 
 [sub_resource type="TileSet" id="TileSet_ekvma"]
 tile_size = Vector2i(32, 32)
@@ -154,18 +154,18 @@ sources/0 = SubResource("TileSetAtlasSource_tf61n")
 sources/1 = SubResource("TileSetAtlasSource_4xkoy")
 sources/2 = SubResource("TileSetScenesCollectionSource_5u5d6")
 
-[node name="Map" type="Node2D"]
+[node name="Map-_TESTE_SORa" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("2_k5omr")]
+[node name="Player" parent="." instance=ExtResource("1_u5peb")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAgAAAAAAAQAHAAYAAgAAAAAAAQAIAAYAAgAAAAAAAQAJAAYAAgAAAAAAAQAKAAYAAgAAAAAAAQALAAYAAgAAAAAAAQAMAAYAAgAAAAAAAQANAAYAAgAAAAAAAQAOAAYAAgAAAAAAAQAPAAYAAQAAAAAAAAAQAAYAAQAAAAAAAAARAAYAAQAAAAAAAAASAAYAAQAAAAAAAAATAAYAAQAAAAAAAAAUAAYAAQAAAAAAAAAVAAYAAQAAAAAAAAAWAAYAAQAAAAAAAAAXAAYAAQAAAAAAAAAYAAYAAQAAAAAAAAAZAAYAAQAAAAAAAAAbAAYAAQAAAAAAAAAcAAYAAQAAAAAAAAAdAAYAAQAAAAAAAAAeAAYAAQAAAAAAAAAaAAYAAQAAAAAAAAAeAAUAAQAAAAAAAAAeAAQAAQAAAAAAAAAeAAMAAQAAAAAAAAAeAAIAAQAAAAAAAAAeAAEAAQAAAAAAAAAeAAAAAQAAAAAAAAAYAAIAAQAAAAAAAAAYAAEAAQAAAAAAAAAYAAAAAQAAAAAAAAAYAP//AQAAAAAAAAAYAP7/AQAAAAAAAAAYAP3/AQAAAAAAAAAYAPz/AQAAAAAAAAAYAPv/AQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAAhAAAAAQAAAAAAAAAiAAAAAQAAAAAAAAAjAAAAAQAAAAAAAAAkAAAAAQAAAAAAAAAlAAAAAQAAAAAAAAAmAAAAAQAAAAAAAAAnAAAAAQAAAAAAAAAoAAAAAQAAAAAAAAAiAPX/AQAAAAAAAAAiAPb/AQAAAAAAAAAiAPf/AQAAAAAAAAAiAPj/AQAAAAAAAAAiAPn/AQAAAAAAAAAiAPr/AQAAAAAAAAAhAPr/AQAAAAAAAAAgAPr/AQAAAAAAAAAfAPr/AQAAAAAAAAAeAPr/AQAAAAAAAAAdAPr/AQAAAAAAAAAcAPr/AQAAAAAAAAAbAPr/AQAAAAAAAAAaAPr/AQAAAAAAAAAZAPr/AQAAAAAAAAAYAPr/AQAAAAAAAAApAAAAAQAAAAAAAAAqAAAAAQAAAAAAAAArAAAAAQAAAAAAAAArAP//AQAAAAAAAAArAP7/AQAAAAAAAAArAP3/AQAAAAAAAAArAPz/AQAAAAAAAAArAPv/AQAAAAAAAAArAPr/AQAAAAAAAAArAPn/AQAAAAAAAAArAPj/AQAAAAAAAAArAPf/AQAAAAAAAAArAPb/AQAAAAAAAAArAPX/AQAAAAAAAAArAPT/AQAAAAAAAAAiAOn/AQAAAAAAAAAiAOr/AQAAAAAAAAAiAOv/AQAAAAAAAAAiAOz/AQAAAAAAAAAiAO3/AQAAAAAAAAAiAO7/AQAAAAAAAAAiAO//AQAAAAAAAAAiAPD/AQAAAAAAAAAiAPH/AQAAAAAAAAAiAPL/AQAAAAAAAAAiAPP/AQAAAAAAAAAiAPT/AQAAAAAAAAArAPP/AQAAAAAAAAArAPL/AQAAAAAAAAArAPH/AQAAAAAAAAArAPD/AQAAAAAAAAArAO//AQAAAAAAAAArAO7/AQAAAAAAAAArAO3/AQAAAAAAAAArAOz/AQAAAAAAAAArAOv/AQAAAAAAAAArAOr/AQAAAAAAAAArAOn/AQAAAAAAAAArAOj/AQAAAAAAAAArAOf/AQAAAAAAAAArAOb/AQAAAAAAAAArAOX/AQAAAAAAAAArAOT/AQAAAAAAAAArAOP/AQAAAAAAAAAiAOb/AQAAAAAAAAAiAOf/AQAAAAAAAAAiAOj/AQAAAAAAAAAiAOP/AQAAAAAAAAAiAOT/AQAAAAAAAAAiAOX/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_ekvma")
 
-[node name="HUD" parent="." instance=ExtResource("4_xh6lg")]
+[node name="HUD" parent="." instance=ExtResource("5_cid8i")]
 
-[node name="Stopwatch" parent="." instance=ExtResource("6_x04i2")]
+[node name="Stopwatch" parent="." instance=ExtResource("6_pawmf")]
 
 [editable path="HUD"]
 [editable path="HUD/Charge"]
