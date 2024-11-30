@@ -14,6 +14,10 @@ config/name="SpeedJam"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[global_group]
+
+stopwatch=""
+
 [input]
 
 move_left={

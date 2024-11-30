@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bt4k5yf8knsii"]
+[gd_scene load_steps=11 format=4 uid="uid://bt4k5yf8knsii"]
 
 [ext_resource type="Texture2D" uid="uid://bfcdfk48ofafw" path="res://icon.svg" id="1_y8yr6"]
 [ext_resource type="PackedScene" uid="uid://c77tmk4lpm6gw" path="res://Game/Player/player.tscn" id="2_k5omr"]
 [ext_resource type="PackedScene" uid="uid://cgg5lf47818p6" path="res://Game/Tiles/water.tscn" id="3_3g4wb"]
 [ext_resource type="Texture2D" uid="uid://cut5r2bcre1g" path="res://Game/placeholder/chao.png" id="3_jg5m4"]
 [ext_resource type="PackedScene" uid="uid://bidl0qfjiqoe5" path="res://Game/UI/hud.tscn" id="4_xh6lg"]
+[ext_resource type="PackedScene" uid="uid://m2k53nusn3nd" path="res://Game/UI/stopwatch.tscn" id="6_x04i2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tf61n"]
 texture = ExtResource("1_y8yr6")
@@ -164,6 +165,8 @@ tile_map_data = PackedByteArray("AAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAA
 tile_set = SubResource("TileSet_ekvma")
 
 [node name="HUD" parent="." instance=ExtResource("4_xh6lg")]
+
+[node name="Stopwatch" parent="." instance=ExtResource("6_x04i2")]
 
 [editable path="HUD"]
 [editable path="HUD/Charge"]

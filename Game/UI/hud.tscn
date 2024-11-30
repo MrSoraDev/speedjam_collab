@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bidl0qfjiqoe5"]
+[gd_scene load_steps=3 format=3 uid="uid://bidl0qfjiqoe5"]
 
 [ext_resource type="PackedScene" uid="uid://dpneir3fwhrqj" path="res://Game/UI/charge.tscn" id="1_4upp2"]
+[ext_resource type="Script" path="res://Game/UI/hud.gd" id="1_lg6c7"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_lg6c7")
 
 [node name="Charge" parent="." instance=ExtResource("1_4upp2")]
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
