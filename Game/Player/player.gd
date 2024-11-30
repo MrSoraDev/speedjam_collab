@@ -39,6 +39,7 @@ var used_doublejump: bool = false
 @onready var player_sprite: Sprite2D = $PlayerSprite
 @onready var ray_cast_right: RayCast2D = $right_wall
 @onready var ray_cast_left: RayCast2D = $Left_wall
+@onready var progress_bar: ProgressBar = $"../HUD/Charge/ProgressBar"
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -46,6 +47,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	charge_label.text = str(charge)
 	dashposition = position.x + 500
+	progress_bar.value = charge
+	
 	
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("move_left", "move_right")
@@ -124,6 +127,9 @@ func jump():
 			velocity.y += 100
 
 func recharge() -> void:
+	if charge >= 100:
+		charge = 100
+		return 
 	charge += 20
 
 func boost() -> void:
